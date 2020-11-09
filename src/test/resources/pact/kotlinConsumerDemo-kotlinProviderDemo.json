@@ -1,0 +1,1283 @@
+{
+  "provider": {
+    "name": "kotlinProviderDemo"
+  },
+  "consumer": {
+    "name": "kotlinConsumerDemo"
+  },
+  "interactions": [
+    {
+      "description": "Create Employee",
+      "request": {
+        "method": "POST",
+        "path": "/demo/employee",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "employee": {
+            "firstName": "Funny FirstName",
+            "lastName": "Funny LastName",
+            "address": [
+              {
+                "no": "01",
+                "country": "Funny Country",
+                "zipCode": "50001",
+                "city": "Funny City",
+                "street": "Funny Street",
+                "state": "Funny State",
+                "addressId": 1
+              }
+            ],
+            "employeeId": 1,
+            "salary": 5000.5,
+            "contacts": [
+              {
+                "contactId": 1,
+                "contactType": "Mobile",
+                "value": "+12132132134"
+              }
+            ]
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.employee.employeeId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.firstName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.lastName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.salary": {
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].addressId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].no": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].street": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].city": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].state": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].country": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].zipCode": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts[*].contactId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts[*].contactType": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts[*].value": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "response": {
+            "status": "Employee Created Successfully"
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.response.status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "State 1: Create Employee"
+        }
+      ]
+    },
+    {
+      "description": "Create Existing Employee",
+      "request": {
+        "method": "POST",
+        "path": "/demo/employee",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "employee": {
+            "firstName": "Funny FirstName",
+            "lastName": "Funny LastName",
+            "address": [
+              {
+                "no": "01",
+                "country": "Funny Country",
+                "zipCode": "50001",
+                "city": "Funny City",
+                "street": "Funny Street",
+                "state": "Funny State",
+                "addressId": 1
+              }
+            ],
+            "employeeId": 1,
+            "salary": 5000.5,
+            "contacts": [
+              {
+                "contactId": 1,
+                "contactType": "Mobile",
+                "value": "+12132132134"
+              }
+            ]
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.employee.employeeId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.firstName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.lastName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.salary": {
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].addressId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].no": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].street": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].city": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].state": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].country": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].zipCode": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts[*].contactId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts[*].contactType": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts[*].value": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 500,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "response": {
+            "trace": "Employee already exists",
+            "message": "http://localhost:8081/demo/employee",
+            "timestamp": "13-27-2020 10:27:04",
+            "status": "INTERNAL_SERVER_ERROR"
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.response.timestamp": {
+              "matchers": [
+                {
+                  "match": "timestamp",
+                  "timestamp": "dd-mm-YYYY hh:mm:ss"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.message": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.trace": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "State 2: Create Existing Employee"
+        }
+      ]
+    },
+    {
+      "description": "Update Employee",
+      "request": {
+        "method": "PUT",
+        "path": "/demo/employee",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "employee": {
+            "firstName": "Funny FirstName",
+            "lastName": "Funny LastName",
+            "address": [
+              {
+                "no": "01",
+                "country": "Funny Country",
+                "zipCode": "50001",
+                "city": "Funny City",
+                "street": "Funny Street",
+                "state": "Funny State",
+                "addressId": 1
+              }
+            ],
+            "employeeId": 1,
+            "salary": 5000.5,
+            "contacts": [
+              {
+                "contactId": 1,
+                "contactType": "Mobile",
+                "value": "+12132132134"
+              }
+            ]
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.employee.employeeId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.firstName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.lastName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.salary": {
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].addressId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].no": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].street": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].city": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].state": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].country": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.address[*].zipCode": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts[*].contactId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts[*].contactType": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.employee.contacts[*].value": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "response": {
+            "status": "Employee Updated Successfully"
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.response.status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "State 3: Update Employee"
+        }
+      ]
+    },
+    {
+      "description": "Get Employee By Name",
+      "request": {
+        "method": "GET",
+        "path": "/demo/employee/firstName/Funny FirstName/lastName/Funny LastName"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "response": {
+            "employees": [
+              {
+                "firstName": "Funny FirstName",
+                "lastName": "Funny LastName",
+                "address": [
+                  {
+                    "no": "01",
+                    "country": "Funny Country",
+                    "zipCode": "50001",
+                    "city": "Funny City",
+                    "street": "Funny Street",
+                    "state": "Funny State",
+                    "addressId": 1
+                  }
+                ],
+                "employeeId": 1,
+                "salary": 5000.5,
+                "contacts": [
+                  {
+                    "contactId": 1,
+                    "contactType": "Mobile",
+                    "value": "+12132132134"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.response.employees": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].employeeId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].firstName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].lastName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].salary": {
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].addressId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].no": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].street": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].city": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].state": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].country": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].zipCode": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts[*].contactId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts[*].contactType": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts[*].value": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "State 4: Get Employee By Name"
+        }
+      ]
+    },
+    {
+      "description": "Get Employee By ID",
+      "request": {
+        "method": "GET",
+        "path": "/demo/employee/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "response": {
+            "employees": [
+              {
+                "firstName": "Funny FirstName",
+                "lastName": "Funny LastName",
+                "address": [
+                  {
+                    "no": "01",
+                    "country": "Funny Country",
+                    "zipCode": "50001",
+                    "city": "Funny City",
+                    "street": "Funny Street",
+                    "state": "Funny State",
+                    "addressId": 1
+                  }
+                ],
+                "employeeId": 1,
+                "salary": 5000.5,
+                "contacts": [
+                  {
+                    "contactId": 1,
+                    "contactType": "Mobile",
+                    "value": "+12132132134"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.response.employees": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].employeeId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].firstName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].lastName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].salary": {
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].addressId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].no": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].street": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].city": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].state": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].country": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].zipCode": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts[*].contactId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts[*].contactType": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts[*].value": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "State 5: Get Employee By Id"
+        }
+      ]
+    },
+    {
+      "description": "Get Employee By Salary Range",
+      "request": {
+        "method": "GET",
+        "path": "/demo/employee/salary/low/2000/high/6000"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "response": {
+            "employees": [
+              {
+                "firstName": "Funny FirstName",
+                "lastName": "Funny LastName",
+                "address": [
+                  {
+                    "no": "01",
+                    "country": "Funny Country",
+                    "zipCode": "50001",
+                    "city": "Funny City",
+                    "street": "Funny Street",
+                    "state": "Funny State",
+                    "addressId": 1
+                  }
+                ],
+                "employeeId": 1,
+                "salary": 5000.5,
+                "contacts": [
+                  {
+                    "contactId": 1,
+                    "contactType": "Mobile",
+                    "value": "+12132132134"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.response.employees": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].employeeId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].firstName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].lastName": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].salary": {
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].addressId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].no": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].street": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].city": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].state": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].country": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].address[*].zipCode": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts[*].contactId": {
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts[*].contactType": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.response.employees[*].contacts[*].value": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "State 6: Get Employee By Salary Range"
+        }
+      ]
+    },
+    {
+      "description": "Delete Employee By Name",
+      "request": {
+        "method": "DELETE",
+        "path": "/demo/employee/firstName/Funny FirstName/lastName/Funny LastName"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "response": {
+            "status": "Employee Deleted Successfully"
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.response.status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "State 7: Delete Employee By Name"
+        }
+      ]
+    },
+    {
+      "description": "Delete Employee By Id",
+      "request": {
+        "method": "DELETE",
+        "path": "/demo/employee/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "response": {
+            "status": "Employee Deleted Successfully"
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.response.status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "State 8: Delete Employee By Id"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.0.10"
+    }
+  }
+}
